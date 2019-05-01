@@ -10,6 +10,20 @@ namespace scale.Views
         public MainPage()
         {
             InitializeComponent();
+
+            fingerprint();
+        }
+        async void fingerprint()
+        {
+            var result = await Plugin.Fingerprint.CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers!");
+            if (result.Authenticated)
+            {
+                Console.WriteLine("Authenticated ok");
+            }
+            else
+            {
+                Console.WriteLine("Authenticated ng");
+            }
         }
     }
 }
